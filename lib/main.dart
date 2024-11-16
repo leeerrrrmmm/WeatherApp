@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:weather/Screens/home_page.dart';
+
+import 'models/item.dart';
 
 
 void main() {
@@ -12,9 +15,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: HomePage(),
+    return ChangeNotifierProvider(
+      create: (context) => Item(),
+      builder: (context, child) => const  MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        home: HomePage(),
+      ),
     );
   }
 }
