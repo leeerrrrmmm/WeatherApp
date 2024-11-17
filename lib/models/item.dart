@@ -28,29 +28,29 @@ class Item extends ChangeNotifier {
     ),
 
     Weather(
-        imagePath: 'lib/images/cloudy.png',
+        imagePath: 'lib/images/rain.png',
         name: 'Odessa',
         degree: '1',
         maxDegree: '2',
         minDegree: '-3',
-        weatherConditions: 'Cloudy',
+        weatherConditions: 'Rain',
         wind: '9 m/s',
         hum: '90%'
     ),
 
     Weather(
-        imagePath: 'lib/images/sun.png',
+        imagePath: 'lib/images/rain.png',
         name: 'Poltava',
         degree: '0',
         maxDegree: '2',
         minDegree: '-1',
-        weatherConditions: 'Sunny',
+        weatherConditions: 'Rain',
         wind: '4 m/s',
-        hum: '30%'
+        hum: '94%'
     ),
 
     Weather(
-        imagePath: 'lib/images/cloudy.png',
+        imagePath: 'lib/images/sun.png',
         name: 'Dnipro',
         degree: '3',
         maxDegree: '2',

@@ -14,51 +14,63 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
 
+
+  void addWeatherItem(Weather weather){
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Success'),
+          content: Text('You we\'re success added a weather item'),
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.lightBlue.shade500,
       child: Consumer<Item>(
           builder: (context, value, child) => Column(
-        children: [
-          Container(
-            padding: EdgeInsets.all(10),
-            margin: EdgeInsets.symmetric(horizontal: 25),
-            decoration: BoxDecoration(
-              color: Colors.lightBlueAccent,
-              borderRadius:BorderRadius.circular(10)
-            ),
-            child:Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     Icon(Icons.search, color:Colors.white),
-                     Text('Search',
-                     style:TextStyle(
-                       color:Colors.white
-                     ))
-                   ]
+            children: [
+              Container(
+                  padding: EdgeInsets.all(10),
+                  margin: EdgeInsets.symmetric(horizontal: 25),
+                  decoration: BoxDecoration(
+                      color: Colors.lightBlueAccent,
+                      borderRadius:BorderRadius.circular(10)
+                  ),
+                  child:Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(Icons.search, color:Colors.white),
+                          Text('Search',
+                              style:TextStyle(
+                                  color:Colors.white
+                              ))
+                        ]
+                    ),
+                  )
               ),
-            )
-          ),
-          const SizedBox(height: 20),
-          Expanded(
-            child: ListView.builder(
-              itemCount:value.weatherStatus.length,
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) {
-                Weather weather = value.getWeatherStatusList()[index];
-                // get a Shoe from shop list
-                return WeatherTile(weather: weather,
+              const SizedBox(height: 20),
+              Expanded(
+                child: ListView.builder(
+                  itemCount:value.weatherStatus.length,
+                  scrollDirection: Axis.vertical,
+                  itemBuilder: (context, index) {
+                    Weather weather = value.getWeatherStatusList()[index];
+                    // get a Shoe from shop list
+                    return WeatherTile(
+                      weather: weather,
+                      // onDismissed: (dir) => addWeatherItem(weather),
 
-                    // onTap: () => addShoeToCart(shoe));
-                );
-              },
-            ),
-          ),
-        ],
-      )),
+                      // onTap: () => addShoeToCart(shoe));
+                    );
+                  },
+                ),
+              ),
+            ],
+          )),
     );
   }
 }
