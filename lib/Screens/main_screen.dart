@@ -55,7 +55,6 @@ class _MainScreenState extends State<MainScreen> {
                     // get a Shoe from shop list
                     return WeatherTile(
                       weather: weather,
-                      // onDismissed: (dir) => addWeatherItem(weather),
 
                       // onTap: () => addShoeToCart(shoe));
                     );
