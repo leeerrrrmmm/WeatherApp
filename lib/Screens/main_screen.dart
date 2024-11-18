@@ -15,14 +15,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
 
 
-  void addWeatherItem(Weather weather){
-    showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text('Success'),
-          content: Text('You we\'re success added a weather item'),
-        ));
-  }
+
 
   @override
   Widget build(BuildContext context) {

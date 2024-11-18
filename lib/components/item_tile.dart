@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/Weather.dart';
+import '../models/item.dart';
 
 class ItemTile extends StatefulWidget {
   final Weather weather;
@@ -13,6 +17,38 @@ class ItemTile extends StatefulWidget {
 }
 
 class _ItemTileState extends State<ItemTile> {
+
+  @override
+  void initState() {
+    _currentTime = _getCurTime();
+    _startTimer();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
+  late String _currentTime;
+  late Timer _timer;
+
+  void _startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        _currentTime = _getCurTime();
+      });
+    });
+  }
+
+  String _getCurTime(){
+    final now = DateTime.now();
+    return '${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}';
+        // ':${now.second.toString().padLeft(2, '0')}';
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,8 +62,30 @@ class _ItemTileState extends State<ItemTile> {
       child: Row(
         mainAxisAlignment:MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset(widget.weather.imagePath,scale:4),
-          Text(widget.weather.name)
+          Column(
+            children: [
+              Image.asset(widget.weather.imagePath,scale:4),
+              Text(_currentTime,
+              style:TextStyle(
+                color:Colors.white,
+                fontSize:16
+              )),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 30.0),
+            child: Text(widget.weather.name,
+            style:TextStyle(
+              color:Colors.white,
+              fontWeight: FontWeight.bold
+            )),
+          ),
+          Text(widget.weather.degree + '°',
+          style:TextStyle(
+            color:Colors.white,
+            fontSize:25,
+
+          )),
         ],
       )
     );

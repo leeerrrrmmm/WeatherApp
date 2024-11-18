@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/Weather.dart';
 import 'dart:async';
-
 import '../models/item.dart';
 
 class WeatherTile extends StatefulWidget {
@@ -50,22 +51,43 @@ class _WeatherTileState extends State<WeatherTile> {
 
   void addWeatherItem(Weather weather) {
       Provider.of<Item>(context, listen: false).addItemToCart(weather);
-
-    showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          backgroundColor: Colors.lightBlue.shade300,
-          title: Text('Success',
-          style:TextStyle(color:Colors.white)),
-          content: Text('You we\'re success added a weather item',
-          style:TextStyle(
-            color:Colors.white
-          )),
-        ));
-
-  Future.delayed(Duration(seconds: 1),()  {
-      Navigator.of(context).pop();
-    });
+      FirebaseFirestore.instance.collection('items').add({
+        'name': weather.name,
+        'degree': weather.degree,
+        'minDegree': weather.minDegree,
+        'maxDegree': weather.maxDegree,
+        'imagePath': weather.imagePath,
+        'weatherConditions': weather.weatherConditions,
+      }).then((val) {
+        showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              backgroundColor: Colors.lightBlue.shade300,
+              title: Text('Success',
+                  style:TextStyle(color:Colors.white)),
+              content: Text('You we\'re success added a weather item',
+                  style:TextStyle(
+                      color:Colors.white
+                  )),
+            ));
+        Future.delayed(Duration(seconds: 1), () {
+          Navigator.of(context).pop();
+        });
+      }).catchError((error) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            backgroundColor: Colors.red,
+            title: Text('Erorr',
+            style:TextStyle(
+              color:Colors.white
+            )),
+            content: Text('There was an error adding the weather item',
+            style:TextStyle(
+              color:Colors.white
+            )),
+          ));
+      });
   }
 
   @override
@@ -74,6 +96,7 @@ class _WeatherTileState extends State<WeatherTile> {
       onTap: () {
         addWeatherItem(widget.weather);
         print('Added ${widget.weather.name},${widget.weather.degree}');
+
         },
       child: Container(
         margin: const EdgeInsets.only(bottom: 10, left: 5, right: 5),

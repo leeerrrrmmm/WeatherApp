@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'Weather.dart';
 
 class Item extends ChangeNotifier {
@@ -102,11 +101,5 @@ class Item extends ChangeNotifier {
     notifyListeners();
   }
 
-
-  // //remove items from cart
-  // void saveItemFromCart(Weather weather) {
-  //   userCart.remove(weather);
-  //   notifyListeners();
-  // }
 
 }
