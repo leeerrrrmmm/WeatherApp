@@ -22,8 +22,8 @@ class _HomePageState extends State<HomePage> {
 
 
   final List<Widget> _pages = [
+    ListenScreen(),
     MainScreen(),
-    ListenScreen()
   ];
   @override
   Widget build(BuildContext context) {

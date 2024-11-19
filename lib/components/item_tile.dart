@@ -45,7 +45,7 @@ class _ItemTileState extends State<ItemTile> {
 
   String _getCurTime(){
     final now = DateTime.now();
-    return '${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}';
+    return '${now.hour.toString().padLeft(2, '')}:${now.minute.toString().padLeft(2, '0')}';
         // ':${now.second.toString().padLeft(2, '0')}';
   }
 
@@ -57,8 +57,8 @@ class _ItemTileState extends State<ItemTile> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _addWeatheItem(widget.weather);
-        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder:(context) => const Detail()), (route) => true);
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
+            builder: (context) => Detail(weather: widget.weather)), (route) => true);
       },
       child: Container(
           margin: const EdgeInsets.only(bottom: 10, left: 5, right: 5),

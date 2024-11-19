@@ -8,7 +8,13 @@ import 'models/item.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+      options:FirebaseOptions(
+          apiKey: 'AIzaSyB6iyTfwTLEA2F0CB1Mn3gTLxhCKTz544E',
+          appId: '1:1021404294465:android:0e28faa9ccea3648e705c0',
+          messagingSenderId: '1021404294465',
+          projectId: 'weather-97eb0'
+      ));
   runApp(const MyApp());
 }
 

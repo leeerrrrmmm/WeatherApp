@@ -1,28 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../components/detail_tile.dart';
+import 'package:weather/components/detail_tile.dart';
 import '../models/Weather.dart';
 import '../models/item.dart';
 
 class Detail extends StatelessWidget {
+  final Weather weather;
 
-  const Detail({super.key});
+  const Detail({super.key, required this.weather});
 
   @override
   Widget build(BuildContext context) {
-    return  Consumer<Item>(
-      builder: (context, value, child) =>  Container(
-        decoration: BoxDecoration(
-          color: Colors.lightBlue
-        ),
-        child: ListView.builder(
-            itemCount: 1,
-            itemBuilder: (context, index) {
-              Weather weather = value.getWeatherStatusList()[index];
-          return DetailTile(weather: weather);
-        }),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.lightBlue,
+        iconTheme: IconThemeData(color: Colors.white),
       ),
+      backgroundColor: Colors.lightBlue,
+      body: Consumer<Item>(
+          builder: (context, value, child) => DetailTile(weather: weather))
     );
   }
 }

@@ -20,7 +20,6 @@ class WeatherTile extends StatefulWidget {
 class _WeatherTileState extends State<WeatherTile> {
   late String _currentTime;
   late Timer _timer;
-
   @override
   void initState() {
     super.initState();
@@ -57,6 +56,9 @@ class _WeatherTileState extends State<WeatherTile> {
         'maxDegree': weather.maxDegree,
         'imagePath': weather.imagePath,
         'weatherConditions': weather.weatherConditions,
+        'wind' : weather.wind,
+        'hum' : weather.hum,
+        'hourlyForecast': weather.hourWeatherForecast.map((hourly) => hourly.toMap()).toList(),
       }).then((val) {
         showDialog(
             context: context,
@@ -64,7 +66,7 @@ class _WeatherTileState extends State<WeatherTile> {
               backgroundColor: Colors.lightBlue.shade300,
               title: Text('Success',
                   style:TextStyle(color:Colors.white)),
-              content: Text('You we\'re success added a weather item',
+              content: Text('You we\'re success added a weather item ',
                   style:TextStyle(
                       color:Colors.white
                   )),
@@ -81,7 +83,7 @@ class _WeatherTileState extends State<WeatherTile> {
             style:TextStyle(
               color:Colors.white
             )),
-            content: Text('There was an error adding the weather item',
+            content: Text('There was an error adding the weather item: $error',
             style:TextStyle(
               color:Colors.white
             )),
