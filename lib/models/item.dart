@@ -134,7 +134,39 @@ class Item extends ChangeNotifier {
             condition: 'Cloudy',
             hoursImage: 'lib/images/cloudy.png',
           ),
+        ],
+        dayForecast: [
+          WeatherOnDay(
+              maxDegree: '4',
+              minDegree: '-5',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '2',
+              minDegree: '0',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '-2',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '0',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '3',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '2',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '-1',
+              minDegree: '-7',
+              imageOfDay: 'lib/images/cloud.png'),
+
         ]
+
     ),
 
     Weather(
@@ -267,6 +299,37 @@ class Item extends ChangeNotifier {
             condition: 'Cloudy',
             hoursImage: 'lib/images/cloudy.png',
           ),
+        ],
+        dayForecast: [
+          WeatherOnDay(
+              maxDegree: '4',
+              minDegree: '-5',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '2',
+              minDegree: '0',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '-2',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '0',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '3',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '2',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '-1',
+              minDegree: '-7',
+              imageOfDay: 'lib/images/cloud.png'),
+
         ]
     ),
 
@@ -400,6 +463,37 @@ class Item extends ChangeNotifier {
             condition: 'Cloudy',
             hoursImage: 'lib/images/cloudy.png',
           ),
+        ],
+        dayForecast: [
+          WeatherOnDay(
+              maxDegree: '4',
+              minDegree: '-5',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '2',
+              minDegree: '0',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '-2',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '0',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '3',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '2',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '-1',
+              minDegree: '-7',
+              imageOfDay: 'lib/images/cloud.png'),
+
         ]
     ),
 
@@ -533,6 +627,37 @@ class Item extends ChangeNotifier {
             condition: 'Cloudy',
             hoursImage: 'lib/images/cloudy.png',
           ),
+        ],
+        dayForecast: [
+          WeatherOnDay(
+              maxDegree: '4',
+              minDegree: '-5',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '2',
+              minDegree: '0',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '-2',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '0',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '3',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '2',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '-1',
+              minDegree: '-7',
+              imageOfDay: 'lib/images/cloud.png'),
+
         ]
     ),
 
@@ -666,6 +791,37 @@ class Item extends ChangeNotifier {
             condition: 'Cloudy',
             hoursImage: 'lib/images/cloudy.png',
           ),
+        ],
+        dayForecast: [
+          WeatherOnDay(
+              maxDegree: '4',
+              minDegree: '-5',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '2',
+              minDegree: '0',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '-2',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '0',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '3',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '2',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '-1',
+              minDegree: '-7',
+              imageOfDay: 'lib/images/cloud.png'),
+
         ]
     ),
 
@@ -799,6 +955,37 @@ class Item extends ChangeNotifier {
             condition: 'Cloudy',
             hoursImage: 'lib/images/cloudy.png',
           ),
+        ],
+        dayForecast: [
+          WeatherOnDay(
+              maxDegree: '4',
+              minDegree: '-5',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '2',
+              minDegree: '0',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '-2',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '0',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '3',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '0',
+              minDegree: '2',
+              imageOfDay: 'lib/images/cloud.png'),
+          WeatherOnDay(
+              maxDegree: '-1',
+              minDegree: '-7',
+              imageOfDay: 'lib/images/cloud.png'),
+
         ]
     )
 

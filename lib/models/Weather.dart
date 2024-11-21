@@ -10,6 +10,7 @@ class Weather {
   final String wind;
   final String hum;
   final List<WeatherOnHour> hourWeatherForecast;
+  final List<WeatherOnDay> dayForecast;
 
   Weather({
     required this.imagePath,
@@ -21,6 +22,7 @@ class Weather {
     required this.wind,
     required this.hum,
     required this.hourWeatherForecast,
+    required this.dayForecast,
   });
 
   // Метод для создания объекта Weather из документа Firestore
@@ -34,6 +36,12 @@ class Weather {
           .map((hourData) => WeatherOnHour.fromMap(hourData))
           .toList();
     }
+    List<WeatherOnDay> forecastDayList = [];
+    if(data['dayForecast'] != null) {
+      forecastDayList = (data['dayForecast'] as List)
+    .map((dayData) => WeatherOnDay.fromMap(dayData))
+          .toList();
+    }
 
     return Weather(
       imagePath: data['imagePath'] ?? '',
@@ -45,6 +53,7 @@ class Weather {
       wind: data['wind'] ?? '',
       hum: data['hum'] ?? '',
       hourWeatherForecast: forecastList,
+      dayForecast: forecastDayList,
     );
   }
 }
@@ -62,7 +71,6 @@ class WeatherOnHour  {
     required this.condition,
   });
 
-  // Метод для преобразования объекта в Map для Firestore
   Map<String, dynamic> toMap() {
     return {
       'hour': hour,
@@ -81,3 +89,33 @@ class WeatherOnHour  {
     );
   }
 }
+
+class WeatherOnDay {
+  final String maxDegree;
+  final String minDegree;
+  final String imageOfDay;
+
+  WeatherOnDay({
+    required this.maxDegree,
+    required this.minDegree,
+    required this.imageOfDay,
+  });
+
+  factory WeatherOnDay.fromMap(Map<String, dynamic> data){
+    return WeatherOnDay(
+        maxDegree: data['maxDegree'] ?? '',
+        minDegree: data['minDegree'] ?? '',
+        imageOfDay: data['imageOfDay'] ?? '');
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'maxDegree': maxDegree,
+      'minDegree': minDegree,
+      'imageOfDay': imageOfDay,
+
+    };
+  }
+}
+
+

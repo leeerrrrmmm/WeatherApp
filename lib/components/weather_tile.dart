@@ -59,6 +59,7 @@ class _WeatherTileState extends State<WeatherTile> {
         'wind' : weather.wind,
         'hum' : weather.hum,
         'hourlyForecast': weather.hourWeatherForecast.map((hourly) => hourly.toMap()).toList(),
+        'dayForecast': weather.dayForecast.map((daily) => daily.toMap()).toList(),
       }).then((val) {
         showDialog(
             context: context,
