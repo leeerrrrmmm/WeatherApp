@@ -42,41 +42,6 @@ class _ItemTileState extends State<ItemTile> {
       });
     });
   }
-  // ListView.builder(
-  // shrinkWrap: true,
-  // physics: NeverScrollableScrollPhysics(),
-  // itemCount: _dateList.length,
-  // itemBuilder: (context, index) {
-  // return Container(
-  // margin: const EdgeInsets.symmetric(vertical: 5.0),
-  // padding: const EdgeInsets.all(8.0),
-  // decoration: BoxDecoration(
-  // color: Colors.lightBlue.shade300,
-  // borderRadius: BorderRadius.circular(10),
-  // border: Border.all(color: Colors.white, width: 0.75),
-  // ),
-  // child: Row(
-  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  // children: [
-  // Text(
-  // _dateList[index], // Форматированная дата
-  // style: TextStyle(color: Colors.white, fontSize: 16),
-  // ),
-  // Row(
-  // children: [
-  // Image.asset(widget.weather.imagePath, scale: 10), // Иконка погоды
-  // const SizedBox(width: 10),
-  // Text(
-  // '${widget.weather.degree}°', // Температура
-  // style: TextStyle(color: Colors.white, fontSize: 18),
-  // ),
-  // ],
-  // ),
-  // ],
-  // ),
-  // );
-  // },
-  // ),
 
   String _getCurTime(){
     final now = DateTime.now();
@@ -84,9 +49,7 @@ class _ItemTileState extends State<ItemTile> {
         // ':${now.second.toString().padLeft(2, '0')}';
   }
 
-    void _addWeatheItem(Weather weather){
-    Provider.of<Item>(context, listen: false).addItemToCart(weather);
-    }
+
 
   @override
   Widget build(BuildContext context) {

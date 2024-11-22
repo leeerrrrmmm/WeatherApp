@@ -16,12 +16,28 @@ class DetailTile extends StatefulWidget {
 
 class _DetailTileState extends State<DetailTile> {
   late List<String> _dateList ;
+  late List<String> _hourList;
+
   @override
   void initState() {
     _geterateDateList();
+    _generateTimeList();
     super.initState();
   }
+  //Time
+  void _generateTimeList() {
+    final _nowTime = DateTime.now();
+    _hourList = List.generate(20, (index) => _getCurTime(_nowTime.add(Duration(hours: index))));
+  }
 
+
+  String _getCurTime(DateTime time) {
+    return '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
+  }
+
+
+
+//Date
   void _geterateDateList() {
     final now = DateTime.now();
     _dateList = List.generate(
@@ -29,7 +45,6 @@ class _DetailTileState extends State<DetailTile> {
           (index) => _getCurDate(now.add(Duration(days: index))),
     );
   }
-
 
   String _getCurDate(DateTime date) {
     return DateFormat('EEEE, d MMMM', 'en_US').format(date);
@@ -175,41 +190,111 @@ class _DetailTileState extends State<DetailTile> {
             ),
           ),
           // Горизонтальная прокрутка
+          // SliverPadding(
+          //   padding: const EdgeInsets.symmetric(vertical: 10.0),
+          //   sliver: SliverToBoxAdapter(
+          //     child: Container(
+          //       height: 150, // Высота контейнера для горизонтальной прокрутки
+          //       child: SingleChildScrollView(
+          //         scrollDirection: Axis.horizontal,
+          //         child: Row(
+          //           children: widget.weather.hourWeatherForecast.map((hourWeather) {
+          //             return Container(
+          //               width: 120, // Ширина каждого элемента
+          //               margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          //               decoration: BoxDecoration(
+          //                 color: Colors.lightBlue,
+          //                 borderRadius: BorderRadius.circular(10),
+          //                 // boxShadow: [
+          //                 //   BoxShadow(color: Colors.black12, blurRadius: 4.0)
+          //                 // ],
+          //               ),
+          //               child: Column(
+          //                 mainAxisAlignment: MainAxisAlignment.center,
+          //                 children: [
+          //                   Image.asset(hourWeather.hoursImage, scale: 4),
+          //                   Text('${hourWeather.hour}', style: TextStyle(fontSize: 14, color:Colors.white)),
+          //                   const SizedBox(height: 20),
+          //                   Text('${hourWeather.temp} ' + '°', style: TextStyle(fontSize: 14, color:Colors.white)),
+          //                 ],
+          //               ),
+          //             );
+          //           }).toList(),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
           SliverPadding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             sliver: SliverToBoxAdapter(
-              child: Container(
-                height: 150, // Высота контейнера для горизонтальной прокрутки
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: widget.weather.hourWeatherForecast.map((hourWeather) {
-                      return Container(
-                        width: 120, // Ширина каждого элемента
-                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                        decoration: BoxDecoration(
-                          color: Colors.lightBlue,
-                          borderRadius: BorderRadius.circular(10),
-                          // boxShadow: [
-                          //   BoxShadow(color: Colors.black12, blurRadius: 4.0)
-                          // ],
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Hourly Forecast',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      height: 120, // Задаем высоту контейнера
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal, // Горизонтальная прокрутка
+                        child: Row(
+                          children: List.generate(
+                            _hourList.length,
+                                (index) {
+                              WeatherOnHour? forecastForHour = index < widget.weather.hourWeatherForecast.length
+                                  ? widget.weather.hourWeatherForecast[index]
+                                  : null;
+
+                              return Container(
+                                width: 100, // Ширина элемента
+                                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                                padding: const EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                  color: Colors.lightBlue.shade300,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      _hourList[index],
+                                      style: TextStyle(color: Colors.white, fontSize: 16),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    if (forecastForHour != null) ...[
+                                      Text(
+                                        '${forecastForHour.temp}°',
+                                        style: TextStyle(color: Colors.white, fontSize: 17),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Image.asset(
+                                        forecastForHour.hoursImage,
+                                        scale: 5.9,
+                                      ),
+                                    ],
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(hourWeather.hoursImage, scale: 4),
-                            Text('${hourWeather.hour}', style: TextStyle(fontSize: 14, color:Colors.white)),
-                            const SizedBox(height: 20),
-                            Text('${hourWeather.temp} ' + '°', style: TextStyle(fontSize: 14, color:Colors.white)),
-                          ],
-                        ),
-                      );
-                    }).toList(),
-                  ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
+
           SliverPadding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             sliver: SliverToBoxAdapter(

@@ -11,6 +11,8 @@ class ListenScreen extends StatefulWidget {
 }
 
 class _ListenScreenState extends State<ListenScreen> {
+
+  GlobalKey<FormState> key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +35,15 @@ class _ListenScreenState extends State<ListenScreen> {
             itemCount: weatherItems.length,
             itemBuilder: (context, index) {
               Weather _UserSelec = weatherItems[index];
-              return ItemTile(weather: _UserSelec);
+              return Dismissible(
+                direction: DismissDirection.endToStart,
+                  key: ValueKey(_UserSelec),
+                  onDismissed: (DismissDirection direction) {
+                  setState(()  {
+                   FirebaseFirestore.instance.collection('items').doc(snap.data!.docs[index].id).delete();
+                  });
+                  },
+                  child: ItemTile(weather: _UserSelec));
             },
           );
         },
